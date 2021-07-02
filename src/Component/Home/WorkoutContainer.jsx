@@ -5,18 +5,7 @@ import WorkoutTable from './WorkoutContainer/WorkoutTable'
 
 
 const WorkoutContainer = () => {
-    const [exercise, setExercise] = useState([]);
-    // const [toggle, setToggle] = useState(true)
-
-    // const flipToggle = () => {
-    //     setToggle(!toggle)
-    // }
-
-    // useEffect(() => {
-    //         .then((data) => callWorkoutRoutine(data))
-    //         .catch((err) => console.warn(err));
-
-    // }, [toggle]);
+    const [exercise, setExercise] = useState([])
 
     const shuffleArray = (array) => {
         for (var i = array.length - 1; i > 0; i--) {
