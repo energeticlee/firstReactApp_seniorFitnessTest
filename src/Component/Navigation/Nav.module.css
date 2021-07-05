@@ -1,0 +1,26 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 10px 20px;
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    height: 5vh;
+    font-size: 2rem;
+}
+
+.leftNav {
+    display: flex;
+}
+
+.subLeftNav {
+    margin-left: 20px;
+}
+
+.item:hover {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: all 0.3s
+}

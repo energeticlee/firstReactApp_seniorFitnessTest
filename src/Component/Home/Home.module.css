@@ -1,0 +1,29 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    width: 100vw;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.tableHead {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.tableBody {
+    display: flex;
+    justify-content: center;
+}
+
+.tableData {
+    font-size: 1.6rem;
+    padding: 10px;
+    text-align: center;
+}

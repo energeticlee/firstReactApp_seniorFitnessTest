@@ -1,11 +1,21 @@
-import React from 'react'
-import WorkoutContainer from './WorkoutContainer'
+import React, { createContext } from 'react'
+import { WorkoutTemplateData } from '../WorkoutTemplateData'
+import WorkoutContainer from './WorkoutContainer/WorkoutContainer'
+
+export const TemplateDatabase = createContext()
 
 const Home = () => {
 
+    //workout title
+    //workout format
+    //workout api by sheet
+
     return (
         <div>
-            <WorkoutContainer />
+            <TemplateDatabase.Provider value={WorkoutTemplateData}>
+                {WorkoutTemplateData.map((a, i) => (
+                    <WorkoutContainer key={i} workoutInfo={a} />))}
+            </TemplateDatabase.Provider>
         </div>
     )
 }
