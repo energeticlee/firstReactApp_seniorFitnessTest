@@ -1,4 +1,5 @@
 .result {
     display: flex;
+    font-size: 2rem;
     flex-direction: column;
 }

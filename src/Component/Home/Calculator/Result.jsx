@@ -6,43 +6,44 @@
 // Recommended Weight
 // Line Chart
 
-import style from './Calculator.module.css'
-
-const BMI = (height, weight) => {
-    return Math.round((weight / ((height / 100) ** 2)) * 100) / 100
+const BMI = (bodyStats) => {
+    return Math.round((bodyStats.weight / ((bodyStats.height / 100) ** 2)) * 100) / 100
 }
 
-const FFMI = (height, weight, bodyFat) => {
-    const FFM = weight * (1 - (bodyFat / 100))
+const FFMI = (bodyStats) => {
+    const FFM = bodyStats.weight * (1 - (bodyStats.bodyFat / 100))
     console.log(FFM)
-    const nonFFMI = FFM / ((height / 100) ** 2)
+    const nonFFMI = FFM / ((bodyStats.height / 100) ** 2)
     console.log(nonFFMI)
-    return Math.round((nonFFMI + 6.1 * (1.8 - height / 100)) * 100) / 100
+    return Math.round((nonFFMI + 6.1 * (1.8 - bodyStats.height / 100)) * 100) / 100
 }
 
-const BMR = (height, weight, age, gender) => {
-    if (gender === "Male") {
-        return Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)
+const BMR = (bodyStats) => {
+    if (bodyStats.gender === "Male") {
+        return Math.round((10 * bodyStats.weight) + (6.25 * bodyStats.height) - (5 * bodyStats.age) + 5)
     } else {
-        return Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)
+        return Math.round((10 * bodyStats.weight) + (6.25 * bodyStats.height) - (5 * bodyStats.age) - 161)
     }
 }
 
-const TDEE = (height, weight, age, gender, activityFactor) => {
+const TDEE = (bodyStats) => {
     let bmr = 0
 
-    if (gender === "Male") {
-        return Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)
+    if (bodyStats.gender === "Male") {
+        bmr = Math.round((10 * bodyStats.weight) + (6.25 * bodyStats.height) - (5 * bodyStats.age) + 5)
     } else {
-        return Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)
+        bmr = Math.round((10 * bodyStats.weight) + (6.25 * bodyStats.height) - (5 * bodyStats.age) - 161)
     }
-    return Math.round(bmr * activityFactor)
+    return Math.round(bmr * bodyStats.activityFactor)
 }
 
-const Result = ({ bodyStats }) => {
+const Result = ({ renderPackage }) => {
+    const [bodyStats] = renderPackage
+
     return (
-        <div className={style.result}>
+        <div style={{ margin: "20px" }}>
             <div>
+                <p>Age: {bodyStats.age}</p>
                 <p>Height: {bodyStats.height}</p>
                 <p>Weight: {bodyStats.weight}</p>
                 <p>Estimated Body Fat: {bodyStats.bodyFat}</p>
@@ -51,17 +52,11 @@ const Result = ({ bodyStats }) => {
             <div>Result</div>
 
             <div>
-                <p>BMI: {BMI(bodyStats.height, bodyStats.weight)}</p>
-                <p>FFMI: {bodyStats.bodyFat > 5 ? FFMI(bodyStats.height, bodyStats.weight, bodyStats.bodyFat) : "*Body Fat Input Required*"}</p>
-                {/* <p>BMR: {bodyStats.age > 18 ? BMR(bodyStats.height, bodyStats.weight, bodyStats.age, bodyStats.gender) : "*Age and Gender Input Required*"}</p>
-                <p>TDEE: {bodyStats.activityFactor > 1 ? TDEE(bodyStats.height, bodyStats.weight, bodyStats.age, bodyStats.gender, bodyStats.activityFactor) : "*Activity Input Required*"}</p> */}
+                <p>BMI: {BMI(bodyStats)}</p>
+                <p>FFMI: {bodyStats.bodyFat > 5 ? FFMI(bodyStats) : "*Body Fat Input Required*"}</p>
+                <p>BMR: {bodyStats.age > 18 ? BMR(bodyStats) : "*Age and Gender Input Required*"} Calories</p>
+                <p>TDEE: {bodyStats.activityFactor > 1 ? TDEE(bodyStats) : "*Activity Input Required*"} Calories</p>
             </div>
-            <p>Recommendation</p>
-            <p>Weight</p>
-
-            <p>Roadmap to goal</p>
-            <p>Daily Calories Intake</p>
-            <p>Type of Training</p>
         </div>
     )
 }

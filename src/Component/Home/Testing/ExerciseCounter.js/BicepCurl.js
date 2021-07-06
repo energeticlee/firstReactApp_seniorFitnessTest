@@ -26,11 +26,11 @@ const BicepCurl = (reducerPackage) => {
 
     useEffect(() => {
         if (state.elbowAngle > 10) bicepCurlCounter(state.elbowAngle)
-    }, [state.elbowAngle])
+    }, [state.elbowAngle]) // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (state.elbowAngle > 10) testResult(state)
-    }, [state.endTime])
+    }, [state.endTime]) // eslint-disable-line react-hooks/exhaustive-deps
 
 }
 

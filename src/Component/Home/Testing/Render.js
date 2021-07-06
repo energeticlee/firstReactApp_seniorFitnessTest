@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useReducer } from 'react'
+import React, { useRef, useEffect, useReducer } from 'react'
 import '@tensorflow/tfjs-backend-webgl';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import Webcam from "react-webcam"
@@ -63,7 +63,8 @@ const Render = () => {
     }
 
     const [state, dispatch] = useReducer(renderjointAngle, {
-        jointAngleTest: true,
+        bicepCurl: false,
+        FRSTS: true,
         elbowAngle: 0,
         shoulderAngle: 0,
         kneeAngle: 0,
@@ -94,7 +95,7 @@ const Render = () => {
             return () => clearInterval(interval)
         }
         init()
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const detect = async (detector) => {
         if (typeof webcamRef.current !== "undefined" && webcamRef.current !== null && webcamRef.current.video.readyState === 4) {
@@ -170,9 +171,8 @@ const Render = () => {
         }
     }
 
-    BicepCurl(reducerPackage)
-    // Squat(reducerPackage)
-
+    if (state.bicepCurl) BicepCurl(reducerPackage)
+    if (state.FRSTS) Squat(reducerPackage)
 
     return (
         <div>

@@ -26,12 +26,12 @@ const Squat = (reducerPackage) => {
 
     useEffect(() => {
         if (state.hipAngle > 10) squatCounter(state.kneeAngle)
-    }, [state.hipAngle])
+    }, [state.hipAngle]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     useEffect(() => {
         if (state.hipAngle > 10) testResult(state)
-    }, [state.endTime])
+    }, [state.endTime]) // eslint-disable-line react-hooks/exhaustive-deps
 }
 
 export default Squat
