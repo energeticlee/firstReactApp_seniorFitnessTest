@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@mediapipe/pose": "^0.4.1624666670",
     "@tensorflow-models/pose-detection": "^0.0.3",
     "@tensorflow/tfjs-backend-webgl": "^3.7.0",
