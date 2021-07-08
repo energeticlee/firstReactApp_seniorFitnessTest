@@ -1,0 +1,55 @@
+.mainContainer {
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    min-height: 50vh;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 6px -1px rgba(43,43,43,0.9);
+}
+
+h1 {
+    font-size: 2.4rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+}
+
+.itemInForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    margin: 10px
+}
+
+.button {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #044cd0;
+    font-size: 1.6rem;
+    color: white;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.buttomLink {
+    display: flex;
+    font-size: 1.4rem;
+}
+
+.profile {
+    font-size: 1.8rem;   
+}

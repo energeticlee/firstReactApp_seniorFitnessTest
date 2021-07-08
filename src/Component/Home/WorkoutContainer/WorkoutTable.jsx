@@ -1,4 +1,4 @@
-import style from '../Home.module.css'
+import style from './Home.module.css'
 
 const WorkoutTable = ({ exercise, workoutInfo }) => {
     return (

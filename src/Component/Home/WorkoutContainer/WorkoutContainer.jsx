@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Heading from "./Heading"
 import Tabletop from "tabletop";
 import WorkoutTable from './WorkoutTable'
-import style from '../Home.module.css'
+import style from './Home.module.css'
 
 
 const WorkoutContainer = ({ workoutInfo }) => {
@@ -24,7 +24,7 @@ const WorkoutContainer = ({ workoutInfo }) => {
             simpleSheet: true
         })
             .then((data) => workoutDesign(data))
-            .catch((err) => console.warn(err));
+            .catch("unable to fetch data");
     }
 
     const workoutDesign = (data) => {

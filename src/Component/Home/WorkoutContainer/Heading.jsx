@@ -1,13 +1,12 @@
 import React from 'react'
-import style from '../Home.module.css';
+import style from './Home.module.css';
 
 const Heading = ({ clickHandler, workoutInfo }) => {
 
     return (
         <div className={style.heading}>
-            <img src="" alt="Icon" />
-            <h2>{workoutInfo.title}</h2>
-            <button onClick={clickHandler}>Generate Workout</button>
+            <h2 className={style.title}>{workoutInfo.title}</h2>
+            <button className={style.button} onClick={clickHandler}>Generate Workout</button>
         </div>
     )
 }

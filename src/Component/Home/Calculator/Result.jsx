@@ -1,10 +1,4 @@
-// BMI, FFMI
-// BMR x AF = TDEE
-
-// Target BF%
-// Target Weight
-// Recommended Weight
-// Line Chart
+import style from './Calculator.module.css'
 
 const BMI = (bodyStats) => {
     return Math.round((bodyStats.weight / ((bodyStats.height / 100) ** 2)) * 100) / 100
@@ -12,9 +6,7 @@ const BMI = (bodyStats) => {
 
 const FFMI = (bodyStats) => {
     const FFM = bodyStats.weight * (1 - (bodyStats.bodyFat / 100))
-    console.log(FFM)
     const nonFFMI = FFM / ((bodyStats.height / 100) ** 2)
-    console.log(nonFFMI)
     return Math.round((nonFFMI + 6.1 * (1.8 - bodyStats.height / 100)) * 100) / 100
 }
 
@@ -41,21 +33,15 @@ const Result = ({ renderPackage }) => {
     const [bodyStats] = renderPackage
 
     return (
-        <div style={{ margin: "20px" }}>
+        <div className={style.inputSection}>
+            <div className={style.inputHead}>Result</div>
             <div>
-                <p>Age: {bodyStats.age}</p>
-                <p>Height: {bodyStats.height}</p>
-                <p>Weight: {bodyStats.weight}</p>
-                <p>Estimated Body Fat: {bodyStats.bodyFat}</p>
-            </div>
-
-            <div>Result</div>
-
-            <div>
-                <p>BMI: {BMI(bodyStats)}</p>
-                <p>FFMI: {bodyStats.bodyFat > 5 ? FFMI(bodyStats) : "*Body Fat Input Required*"}</p>
-                <p>BMR: {bodyStats.age > 18 ? BMR(bodyStats) : "*Age and Gender Input Required*"} Calories</p>
-                <p>TDEE: {bodyStats.activityFactor > 1 ? TDEE(bodyStats) : "*Activity Input Required*"} Calories</p>
+                <div>
+                    <div className={style.inputContainer}><p>BMI:</p> <p className={style.input}>{BMI(bodyStats) ? BMI(bodyStats) : null}</p></div>
+                    <div className={style.inputContainer}><p>FFMI:</p> <p className={style.input}>{FFMI(bodyStats) ? FFMI(bodyStats) : "*Body Fat Input Required*"}</p></div>
+                    <div className={style.inputContainer}><p>BMR:</p> <p className={style.input}>{BMR(bodyStats) ? BMR(bodyStats) : "*Age and Gender Input Required*"} Calories</p></div>
+                    <div className={style.inputContainer}><p>TDEE:</p> <p className={style.input}>{bodyStats.activityFactor > 1 ? TDEE(bodyStats) : "*Activity Input Required*"} Calories</p></div>
+                </div>
             </div>
         </div>
     )

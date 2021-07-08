@@ -3,14 +3,29 @@
     flex-direction: column;
     align-items: center;
     margin: 20px 0;
-    width: 100vw;
 }
 
 .heading {
     display: flex;
+    font-size: 2rem;
     align-items: center;
     padding: 10px;
 }
+
+.title, .button {
+    margin: 20px
+}
+
+.button {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #044cd0;
+    font-size: 1.6rem;
+    color: white;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
 
 .tableHead {
     text-align: center;
